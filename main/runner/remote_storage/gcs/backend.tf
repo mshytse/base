@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "state_storage_mshytse"
-    prefix  = "github"
+    bucket  = var.state_bucket_name
+    prefix  = local.bucket_path_prefix
   }
 }
