@@ -1,5 +1,6 @@
-locals {
-  bucket_path_prefix = "${data.scalr_current_run.get_ws_name.workspace_name}"
+variable "bucket_path_prefix" {
+  type = string
+  description = "The path prefix to store states in"
 }
 
 variable "state_bucket_name" {
@@ -52,5 +53,5 @@ output "random_suffix" {
 }
 
 output "gcs_state_path" {
-  value = "${var.state_bucket_name}/${local.bucket_path_prefix}"
+  value = "${var.state_bucket_name}/${var.bucket_path_prefix}"
 }
