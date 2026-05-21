@@ -23,3 +23,9 @@ variable "command_for_local_exec" {
   description = "Command for local exec (single line; no newlines inside -c string)"
   default = "echo '{\"result\": \"test\"}'"
 }
+
+provider "scalr" {
+  # primary account
+}
+
+data "scalr_current_run" "example" {}
