@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    scalr = {
+      source                = "scalr/scalr"
+      version               = "~> 2.0"
+    }
+  }
+}
+
 data "external" "test" {
   program = ["bash", "-c", var.program_for_data_external]
 }
