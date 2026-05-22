@@ -1,9 +1,9 @@
 data "external" "test" {
+  count = 50
   program = ["bash", "-c", var.program_for_data_external]
 }
 
 variable "program_for_data_external" {
-  count = 50
   type = string
   description = "Program for data external"
   default = "echo '{\"result\": \"test\"}'"
