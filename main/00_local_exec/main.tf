@@ -3,6 +3,7 @@ data "external" "test" {
 }
 
 variable "program_for_data_external" {
+  count = 50
   type = string
   description = "Program for data external"
   default = "echo '{\"result\": \"test\"}'"
