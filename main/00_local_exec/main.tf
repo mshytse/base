@@ -1,5 +1,5 @@
 data "external" "test" {
-  count = 50
+  count = 100
   program = ["bash", "-c", var.program_for_data_external]
 }
 
