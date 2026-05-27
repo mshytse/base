@@ -30,3 +30,5 @@ resource "terraform_data" "test2" {
 output "test2" {
   value = terraform_data.test2.output
 }
+
+#comment
