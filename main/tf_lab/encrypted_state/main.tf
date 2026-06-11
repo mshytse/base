@@ -17,6 +17,12 @@ terraform {
 variable "encryption_passphrase" {
   type      = string
   sensitive = true
+  default   = "scalr-state-encryption-key"
+
+  validation {
+    condition     = length(var.encryption_passphrase) >= 16
+    error_message = "Passphrase must be at least 16 characters long."
+  }
 }
 
 resource "terraform_data" "fox" {
