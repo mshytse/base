@@ -1,6 +1,6 @@
-terraform {
-  required_version = ""
-}
+# terraform {
+#   required_version = ""
+# }
 
 resource "null_resource" {
   count = 7
@@ -8,7 +8,6 @@ resource "null_resource" {
     always_run = timestamp()
   }
 }
-
 resource "null_resource" {
   count = 7
   triggers = {
@@ -46,5 +45,3 @@ variable "" {
 output "" {
   value = "output"
 }
-
-#comment
