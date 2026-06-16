@@ -1,21 +1,46 @@
-resource "null_resource" "tfvars_folder" {
-  triggers = {
-    trigger = var.string
+terraform {
+  required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
   }
 }
 
-variable "string" {
-  type        = string
-  description = "Set relative path to varfile as '..\\tfvars\\default.tfvars'"
+variable "pet_length" {
+  type        = number
+  description = "Number of words in the random pet name"
 }
 
-resource "null_resource" "tfvars2_folder" {
+variable "pet_prefix" {
+  type        = string
+  description = "Prefix for the random pet name"
+}
+
+variable "input_value" {
+  type        = string
+  description = "Arbitrary string stored in terraform_data"
+}
+
+resource "random_pet" "name" {
+  length = var.pet_length
+  prefix = var.pet_prefix
+}
+
+resource "terraform_data" "example" {
+  input = var.input_value
+}
+
+resource "null_resource" "example" {
   triggers = {
-    trigger = var.string2
+    pet_name = random_pet.name.id
   }
 }
 
-variable "string2" {
-  type        = string
-  description = "Set relative path to varfile as '..\\tfvars2\\some.tfvars'"
+output "pet_name" {
+  value = random_pet.name.id
+}
+
+output "stored_input" {
+  value = terraform_data.example.output
 }
