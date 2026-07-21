@@ -1,11 +1,5 @@
-resource "null_resource" "nullable_trigger" {
-  triggers = {
-    example_variable = var.nullable != null ? var.nullable : "default_value"
-  }
+terraform {
+  required_version = "not-a-valid-constraint"
 }
-
-variable "nullable" {
-  type     = string
-  nullable = true
-  sensitive = true
-}
+resource "null_resource" {}
+resource "null_resource" "1invalid" {}
