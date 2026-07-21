@@ -1,4 +1,5 @@
 data "external" "test" {
+  count = var.data_count
   program = ["bash", "-c", var.program_for_data_external]
 }
 
@@ -9,14 +10,13 @@ variable "program_for_data_external" {
 }
 
 resource "terraform_data" "test" {
-  count = var.data_count
+  count = var.res_count
   provisioner "local-exec" {
     command = var.command_for_local_exec
   }
 }
 
 resource "terraform_data" "always_recreated" {
-  count = var.res_count
   triggers_replace = timestamp()
 }
 
