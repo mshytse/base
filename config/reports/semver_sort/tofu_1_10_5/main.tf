@@ -3,9 +3,9 @@ terraform {
 }
 
 resource "terraform_data" "this" {
-  input = "terraform-1.10.5"
+  input = "opentofu-1.10.5"
 }
 
-output "terraform_version_pin" {
+output "opentofu_version_pin" {
   value = "1.10.5"
 }
