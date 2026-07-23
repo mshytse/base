@@ -11,13 +11,16 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Ticket repro pair: 4.4.0 vs 4.32.0. Needs AWS provider configuration on the workspace.
-data "aws_caller_identity" "current" {}
+# Ticket repro: 4.4.0 vs 4.32.0. Managed resource required so provider appears in state → usage report.
+resource "aws_s3_bucket" "this" {
+  bucket_prefix = "semver-sort-aws-440-"
+  force_destroy = true
+}
 
 output "provider_version" {
   value = "4.4.0"
 }
 
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
+output "bucket_id" {
+  value = aws_s3_bucket.this.id
 }

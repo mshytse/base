@@ -19,6 +19,9 @@ To create all workspaces in one apply (current env via `scalr_current_run`, VCS 
 - Semver asc: `0.9.0`, `0.10.0`, `0.11.2`, `0.12.1`
 
 **Provider usage (`hashicorp/aws`) - ticket repro, needs AWS pcfg**
+
+Managed resource required (`aws_s3_bucket`); data sources alone do not populate `state.providers`, so usage is not collected.
+
 - `provider_aws_4_4_0` → `4.4.0`
 - `provider_aws_4_32_0` → `4.32.0`
 - `provider_aws_4_52_0` → `4.52.0` (no `4.52.7` on registry; ticket used that string)

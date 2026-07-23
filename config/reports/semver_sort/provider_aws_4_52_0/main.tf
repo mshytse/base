@@ -11,12 +11,15 @@ provider "aws" {
   region = "us-east-1"
 }
 
-data "aws_caller_identity" "current" {}
+resource "aws_s3_bucket" "this" {
+  bucket_prefix = "semver-sort-aws-4520-"
+  force_destroy = true
+}
 
 output "provider_version" {
   value = "4.52.0"
 }
 
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
+output "bucket_id" {
+  value = aws_s3_bucket.this.id
 }
