@@ -27,7 +27,7 @@ To create all workspaces in one apply (current env via `scalr_current_run`, VCS 
 
 **Module usage (`terraform-aws-modules/s3-bucket/aws`) - needs AWS pcfg**
 
-Old `cloudposse/label/null` 0.9–0.11 use TF 0.11 quoted types and fail on modern Terraform. Replaced with HCL2 s3-bucket pins that still break lex sort (`3.4.0` vs `3.14.0`). `create_bucket = false` (no real bucket).
+Old `cloudposse/label/null` 0.9–0.11 use TF 0.11 quoted types and fail on modern Terraform. Replaced with HCL2 s3-bucket pins that still break lex sort (`3.4.0` vs `3.14.0`). Buckets are created (module usage only shows after a real apply).
 
 - `module_s3_3_4_0` → `3.4.0`
 - `module_s3_3_14_0` → `3.14.0`
