@@ -21,17 +21,19 @@ To create all workspaces in one apply (current env via `scalr_current_run`, VCS 
 **Provider usage (`hashicorp/aws`) - ticket repro, needs AWS pcfg**
 - `provider_aws_4_4_0` → `4.4.0`
 - `provider_aws_4_32_0` → `4.32.0`
-- `provider_aws_4_52_7` → `4.52.7`
-- Lex (wrong): `4.32.0`, `4.4.0`, `4.52.7`
-- Semver asc: `4.4.0`, `4.32.0`, `4.52.7`
+- `provider_aws_4_52_0` → `4.52.0` (no `4.52.7` on registry; ticket used that string)
+- Lex (wrong): `4.32.0`, `4.4.0`, `4.52.0`
+- Semver asc: `4.4.0`, `4.32.0`, `4.52.0`
 
-**Module usage (`cloudposse/label/null`)**
-- `module_label_0_9_0` → `0.9.0`
-- `module_label_0_10_0` → `0.10.0`
-- `module_label_0_11_0` → `0.11.0`
-- `module_label_0_25_0` → `0.25.0`
-- Lex (wrong): `0.10.0`, `0.11.0`, `0.25.0`, `0.9.0`
-- Semver asc: `0.9.0`, `0.10.0`, `0.11.0`, `0.25.0`
+**Module usage (`terraform-aws-modules/s3-bucket/aws`) - needs AWS pcfg**
+
+Old `cloudposse/label/null` 0.9–0.11 use TF 0.11 quoted types and fail on modern Terraform. Replaced with HCL2 s3-bucket pins that still break lex sort (`3.4.0` vs `3.14.0`). `create_bucket = false` (no real bucket).
+
+- `module_s3_3_4_0` → `3.4.0`
+- `module_s3_3_14_0` → `3.14.0`
+- `module_s3_4_4_0` → `4.4.0`
+- Lex (wrong): `3.14.0`, `3.4.0`, `4.4.0`
+- Semver asc: `3.4.0`, `3.14.0`, `4.4.0`
 
 **OpenTofu version usage (Scalr OpenTofu list only, floor 1.6.0)**
 - `tofu_1_6_0` → OpenTofu `1.6.0`
@@ -46,8 +48,8 @@ Bootstrap sets `iac_platform = opentofu` + matching `terraform_version` on these
 ## Checks after applies
 
 1. Reports → Provider usage → `hashicorp/time` (and `hashicorp/aws` if used) → sort version asc/desc.
-2. Reports → Module usage → `cloudposse/label/null` → sort version.
+2. Reports → Module usage → `terraform-aws-modules/s3-bucket/aws` → sort version.
 3. Reports → software / OpenTofu versions → sort version.
 4. Registry module/provider version lists + software versions (upload more OpenTofu/Terragrunt builds with same digit-width clash if needed).
 
-Expected ascending for ticket pair: `4.4.0` before `4.32.0` before `4.52.7`.
+Expected ascending for ticket pair: `4.4.0` before `4.32.0` before `4.52.0`.

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.52.7"
+      version = "4.52.0"
     }
   }
 }
@@ -14,7 +14,7 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 output "provider_version" {
-  value = "4.52.7"
+  value = "4.52.0"
 }
 
 output "account_id" {

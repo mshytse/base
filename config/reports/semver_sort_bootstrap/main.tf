@@ -19,12 +19,11 @@ locals {
 
     provider_aws_4_4_0  = { iac_platform = "terraform", version = null }
     provider_aws_4_32_0 = { iac_platform = "terraform", version = null }
-    provider_aws_4_52_7 = { iac_platform = "terraform", version = null }
+    provider_aws_4_52_0 = { iac_platform = "terraform", version = null }
 
-    module_label_0_9_0  = { iac_platform = "terraform", version = null }
-    module_label_0_10_0 = { iac_platform = "terraform", version = null }
-    module_label_0_11_0 = { iac_platform = "terraform", version = null }
-    module_label_0_25_0 = { iac_platform = "terraform", version = null }
+    module_s3_3_4_0  = { iac_platform = "terraform", version = null }
+    module_s3_3_14_0 = { iac_platform = "terraform", version = null }
+    module_s3_4_4_0  = { iac_platform = "terraform", version = null }
 
     tofu_1_6_0  = { iac_platform = "opentofu", version = "1.6.0" }
     tofu_1_7_2  = { iac_platform = "opentofu", version = "1.7.2" }
@@ -54,7 +53,7 @@ resource "scalr_workspace" "fixture" {
 
   dynamic "provider_configuration" {
     for_each = (
-      startswith(each.key, "provider_aws_") && var.aws_provider_configuration_id != null
+      (startswith(each.key, "provider_aws_") || startswith(each.key, "module_s3_")) && var.aws_provider_configuration_id != null
       ? [var.aws_provider_configuration_id]
       : []
     )

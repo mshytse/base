@@ -29,6 +29,6 @@ variable "auto_queue_runs" {
 
 variable "aws_provider_configuration_id" {
   type        = string
-  description = "Optional AWS pcfg-... attached only to provider_aws_* workspaces."
+  description = "Optional AWS pcfg-... attached to provider_aws_* and module_s3_* workspaces."
   default     = null
 }
