@@ -41,8 +41,13 @@ variable "tags" {
   type = map(string)
 }
 
+variable "instance_count" {
+  default = 150
+  type    = number
+}
+
 resource "terraform_data" "state_padding" {
-  count = 150
+  count = var.instance_count
 
   input = {
     config = {
