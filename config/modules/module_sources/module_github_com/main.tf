@@ -20,3 +20,11 @@ module "smth_from_git5" {
 module "smth_from_git6" {
   source = "github.com/mshytse/temp?ref=qqq"
 }
+
+module "smth_from_git7" {
+  source = "github.com/mshytse/temp?ref=1.22.1"
+}
+
+module "smth_from_git8" {
+  source = "github.com/mshytse/temp?ref=1.4.3"
+}
