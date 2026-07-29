@@ -36,3 +36,15 @@ module "smth_from_git9" {
 module "smth_from_git10" {
   source = "github.com/mshytse/temp?ref=02.02.02"
 }
+
+module "smth_from_git11" {
+  source = "github.com/mshytse/temp?ref=02.03.0"
+}
+
+module "smth_from_git12" {
+  source = "github.com/mshytse/temp?ref=2.03.0"
+}
+
+module "smth_from_git13" {
+  source = "github.com/mshytse/temp?ref=2.03.1"
+}
