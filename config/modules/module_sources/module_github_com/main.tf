@@ -28,3 +28,11 @@ module "smth_from_git7" {
 module "smth_from_git8" {
   source = "github.com/mshytse/temp?ref=1.4.3"
 }
+
+module "smth_from_git7" {
+  source = "github.com/mshytse/temp?ref=02.02"
+}
+
+module "smth_from_git8" {
+  source = "github.com/mshytse/temp?ref=02.02.02"
+}
