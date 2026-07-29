@@ -1,3 +1,3 @@
 module "smth_from_git" {
-  source = "github.com/aleatoricmbnt/flat/"
+  source = "https://github.com/mshytse/temp.git?ref=masha-smash"
 }
