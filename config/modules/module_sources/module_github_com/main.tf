@@ -1,3 +1,3 @@
 module "smth_from_git" {
-  source = "https://github.com/mshytse/temp.git?ref=masha-smash"
+  source = "github.com/mshytse/temp?ref=masha-smash"
 }
