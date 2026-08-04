@@ -8,7 +8,7 @@ resource "google_service_account" "service_acc" {
 }
 
 resource "random_pet" "service_acc_name" {
-  length = 3
+  length = 2
 }
 
 variable "google_project_id" {
