@@ -8,12 +8,14 @@ resource "google_service_account" "service_acc" {
 }
 
 resource "random_pet" "service_acc_name" {
-  length = 2
+  length = 3
 }
 
 variable "google_project_id" {
   default = null
 }
+
+#new comment
 
 # output "service_account_name" {
 #   value = provider::google::name_from_id(google_service_account.service_acc.id)
