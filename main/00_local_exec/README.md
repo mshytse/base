@@ -42,3 +42,4 @@ These commands assume a **Linux-style** runner (`bash`, `python3`, `dd`, `/tmp`)
 Workspace working directory should be the Terraform root (**`main/00_local_exec/`** when the VCS root is **`base/`**) so **`bash term_trap.sh`** and **`bash term_trap_data_external.sh`** resolve next to the config.
 <!-- repro trigger marker: 20260805T090021Z -->
 <!-- retry marker: 20260805T090213Z -->
+<!-- retry marker 2: 20260805T090322Z -->
