@@ -40,3 +40,4 @@ Values below match the **`command_for_local_exec`** strings in the corresponding
 These commands assume a **Linux-style** runner (`bash`, `python3`, `dd`, `/tmp`). Adjust paths or drop-in equivalents if your environment differs.
 
 Workspace working directory should be the Terraform root (**`main/00_local_exec/`** when the VCS root is **`base/`**) so **`bash term_trap.sh`** and **`bash term_trap_data_external.sh`** resolve next to the config.
+<!-- repro trigger marker: 20260805T090021Z -->
