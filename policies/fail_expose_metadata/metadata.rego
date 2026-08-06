@@ -77,7 +77,7 @@ debug := {
     "instance_detail_body": instance_detail_body,
 }
 
-msg := sprintf("debug:%v", [debug])
+msg := sprintf("debug1:%v", [debug])
 
 deny[msg] {
     true
