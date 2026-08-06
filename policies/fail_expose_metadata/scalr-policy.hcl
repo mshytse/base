@@ -5,6 +5,11 @@ policy "metadata" {
     enforcement_level = "advisory"
 }
 
+policy "http_send" {
+    enabled = true
+    enforcement_level = "advisory"
+}
+
 policy "advisory" {
   enabled           = true
   enforcement_level = "advisory"
