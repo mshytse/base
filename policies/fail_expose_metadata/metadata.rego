@@ -40,7 +40,8 @@ zone_response := http.send({
 
 zone_raw := trim_space(object.get(zone_response, "raw_body", ""))
 zone_parts := split(zone_raw, "/")
-zone := zone_parts[count(zone_parts) - 1] if count(zone_parts) > 0 else ""
+# safe last-element: prepend "" so empty split still indexes
+zone := array.concat([""], zone_parts)[count(zone_parts)]
 
 name_response := http.send({
 	"method": "GET",
