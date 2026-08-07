@@ -5,8 +5,8 @@
 # "." even when Scalr working dir is "subdir" - because subdir IS the root then.
 # Use abspath(...) or path.cwd to see absolute paths (those include .../subdir).
 #
-# terraform.applying is false at plan time (and thus in state outputs). Apply-time
-# true only shows in the local-exec provisioner log below.
+# terraform.applying is ephemeral (OpenTofu 1.12+ / TF 1.10+): cannot go into
+# resource input or normal outputs. Only visible in the local-exec log below.
 #
 # SCALR_RUNNER_BACKEND=remote → terraform.workspace == "default"
 # SCALR_RUNNER_BACKEND=cloud  → terraform.workspace == Scalr workspace name
@@ -14,7 +14,6 @@
 locals {
   interpolations = {
     terraform_workspace     = terraform.workspace
-    terraform_applying      = terraform.applying
     path_module             = path.module
     path_root               = path.root
     path_cwd                = path.cwd
@@ -54,9 +53,4 @@ output "module" {
 
 output "terraform_workspace" {
   value = terraform.workspace
-}
-
-output "terraform_applying" {
-  description = "Always false in plan/state; see terraform_data.runtime_env apply log for true"
-  value       = terraform.applying
 }

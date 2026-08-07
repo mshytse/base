@@ -1,7 +1,6 @@
 locals {
   interpolations = {
     terraform_workspace     = terraform.workspace
-    terraform_applying      = terraform.applying
     path_module             = path.module
     path_root               = path.root
     path_cwd                = path.cwd
