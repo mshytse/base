@@ -1,8 +1,5 @@
-# Root probe + local module. Compare path.module / path.root / path.cwd
-# across root vs ./modules/probe.
-#
-# SCALR_RUNNER_BACKEND=remote → terraform.workspace == "default"
-# SCALR_RUNNER_BACKEND=cloud  → terraform.workspace == Scalr workspace name
+# Same template as root, for use as Terraform working directory = subdir.
+# Module path is relative to this dir.
 
 locals {
   interpolations = {
@@ -19,7 +16,7 @@ resource "terraform_data" "interpolation_probe" {
 }
 
 module "probe" {
-  source = "./modules/probe"
+  source = "../modules/probe"
 }
 
 output "root" {
