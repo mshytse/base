@@ -1,12 +1,21 @@
 # Same template as root, for use as Terraform working directory = subdir.
 # Module path is relative to this dir.
+#
+# Expect: path_root still ".", abspath_root / path_cwd end with .../subdir,
+# module.path_module == "../modules/probe" (vs "./modules/probe" at repo root).
+#
+# terraform.applying is false at plan time (and thus in state outputs). Apply-time
+# true only shows in the local-exec provisioner log below.
 
 locals {
   interpolations = {
     terraform_workspace     = terraform.workspace
+    terraform_applying      = terraform.applying
     path_module             = path.module
     path_root               = path.root
     path_cwd                = path.cwd
+    abspath_module          = abspath(path.module)
+    abspath_root            = abspath(path.root)
     derived_name_from_tf_ws = "${terraform.workspace}-resource"
   }
 }
@@ -19,6 +28,17 @@ module "probe" {
   source = "../modules/probe"
 }
 
+resource "terraform_data" "runtime_env" {
+  triggers_replace = [timestamp()]
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      echo "terraform.applying=${terraform.applying}"
+      printenv | grep '^SCALR_' | sort || true
+    EOT
+  }
+}
+
 output "root" {
   value = local.interpolations
 }
@@ -29,4 +49,9 @@ output "module" {
 
 output "terraform_workspace" {
   value = terraform.workspace
+}
+
+output "terraform_applying" {
+  description = "Always false in plan/state; see terraform_data.runtime_env apply log for true"
+  value       = terraform.applying
 }
