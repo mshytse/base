@@ -3,10 +3,22 @@ data "external" "test" {
   program = ["bash", "-c", var.program_for_data_external]
 }
 
+data "external" "test2" {
+  count = var.data_count
+  program = ["bash", "-c", var.program_for_data_external2]
+  depends_on = [data.external.test]
+}
+
 variable "program_for_data_external" {
   type = string
   description = "Program for data external"
   default = "echo '{\"result\": \"test\"}'"
+}
+
+variable "program_for_data_external2" {
+  type = string
+  description = "Program for data external"
+  default = "'{\"result\": \"test2\"}'"
 }
 
 resource "terraform_data" "test" {
