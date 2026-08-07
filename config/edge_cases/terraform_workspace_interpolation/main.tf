@@ -6,7 +6,8 @@
 # Use abspath(...) or path.cwd to see absolute paths (those include .../subdir).
 #
 # terraform.applying is ephemeral (OpenTofu 1.12+ / TF 1.10+): cannot go into
-# resource input or normal outputs. Only visible in the local-exec log below.
+# resource input, normal outputs, or local-exec command (stdout gets suppressed).
+# Provisioner running at all == apply phase.
 #
 # SCALR_RUNNER_BACKEND=remote → terraform.workspace == "default"
 # SCALR_RUNNER_BACKEND=cloud  → terraform.workspace == Scalr workspace name
@@ -31,13 +32,15 @@ module "probe" {
   source = "./modules/probe"
 }
 
-# Apply-only: terraform.applying=true here; also dump SCALR_* runtime env.
+# Apply-only (provisioners do not run during plan). Do not interpolate
+# terraform.applying into the command - OpenTofu suppresses all provisioner
+# stdout when the config references an ephemeral value.
 resource "terraform_data" "runtime_env" {
   triggers_replace = [timestamp()]
 
   provisioner "local-exec" {
     command = <<-EOT
-      echo "terraform.applying=${terraform.applying}"
+      echo "runtime_env provisioner running (apply phase; terraform.applying would be true)"
       printenv | grep '^SCALR_' | sort || true
     EOT
   }

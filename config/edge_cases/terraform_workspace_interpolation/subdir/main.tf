@@ -5,7 +5,8 @@
 # module.path_module == "../modules/probe" (vs "./modules/probe" at repo root).
 #
 # terraform.applying is ephemeral (OpenTofu 1.12+ / TF 1.10+): cannot go into
-# resource input or normal outputs. Only visible in the local-exec log below.
+# resource input, normal outputs, or local-exec command (stdout gets suppressed).
+# Provisioner running at all == apply phase.
 
 locals {
   interpolations = {
@@ -27,12 +28,14 @@ module "probe" {
   source = "../modules/probe"
 }
 
+# Do not interpolate terraform.applying - OpenTofu suppresses provisioner stdout
+# when the config references an ephemeral value.
 resource "terraform_data" "runtime_env" {
   triggers_replace = [timestamp()]
 
   provisioner "local-exec" {
     command = <<-EOT
-      echo "terraform.applying=${terraform.applying}"
+      echo "runtime_env provisioner running (apply phase; terraform.applying would be true)"
       printenv | grep '^SCALR_' | sort || true
     EOT
   }
