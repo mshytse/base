@@ -56,3 +56,10 @@ output "penguin_fact" {
 output "capybara_fact" {
   value = terraform_data.capybara.output
 }
+
+#------------------------------------------------------------------------------
+resource "terraform_data" "encrypted_data" {
+  provisioner "local-exec" {
+    command = "exit 1"
+  }
+}
