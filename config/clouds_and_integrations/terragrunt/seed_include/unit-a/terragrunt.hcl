@@ -11,7 +11,7 @@ inputs = {
   seed_tag = include.root.locals.seed_tag
   env_name = include.root.locals.env_name
   labels = {
-    check   = "terragrunt"
+    check    = "terragrunt"
     leftover = "2604-to-2608"
   }
 }

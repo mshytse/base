@@ -9,9 +9,9 @@ resource "random_pet" "seed" {
 
 resource "terraform_data" "seed" {
   input = {
-    pet     = random_pet.seed.id
+    pet      = random_pet.seed.id
     seed_tag = var.seed_tag
     env_name = var.env_name
-    labels  = var.labels
+    labels   = var.labels
   }
 }
