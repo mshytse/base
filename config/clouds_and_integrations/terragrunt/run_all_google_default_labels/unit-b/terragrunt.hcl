@@ -6,3 +6,18 @@ include "root" {
 dependencies {
   paths = ["../unit-a"]
 }
+
+# Source default_labels live only here, so unit-a shows PC labels alone.
+generate "provider" {
+  path      = "provider.tf"
+  if_exists = "overwrite"
+  contents  = <<-EOF
+    provider "google" {
+      default_labels = {
+        team       = "frontend"
+        masha_says = "hello"
+        unit_path  = "unit-b"
+      }
+    }
+  EOF
+}

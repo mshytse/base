@@ -21,16 +21,12 @@ remote_state {
   }
 }
 
+# Bare provider block: needed for Scalr's override file to merge into.
+# unit-b overrides this generate with source default_labels.
 generate "provider" {
   path      = "provider.tf"
   if_exists = "overwrite"
   contents  = <<-EOF
-    provider "google" {
-      default_labels = {
-        team       = "frontend"
-        masha_says = "hello"
-        unit_path  = "${replace(path_relative_to_include(), "/", "_")}"
-      }
-    }
+    provider "google" {}
   EOF
 }
