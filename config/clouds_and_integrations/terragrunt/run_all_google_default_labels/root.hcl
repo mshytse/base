@@ -20,13 +20,3 @@ remote_state {
     prefix = "${get_env("SCALR_WORKSPACE_ID")}/${path_relative_to_include()}"
   }
 }
-
-# Bare provider block: needed for Scalr's override file to merge into.
-# unit-b overrides this generate with source default_labels.
-generate "provider" {
-  path      = "provider.tf"
-  if_exists = "overwrite"
-  contents  = <<-EOF
-    provider "google" {}
-  EOF
-}
