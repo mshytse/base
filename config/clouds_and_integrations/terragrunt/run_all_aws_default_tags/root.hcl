@@ -9,7 +9,6 @@
 #       Environment = test-automation
 #     strategy = update
 #   - Export shell variables = true (S3 backend auth)
-#   - Shell var BUCKET_NAME = S3 bucket for per-unit state
 #
 # Expected tags_all (both units): PC tags + Owner=qa-team from source.
 # Bug shape seen in e2e: PC tags present, Owner missing.
@@ -21,7 +20,7 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    bucket  = get_env("BUCKET_NAME")
+    bucket  = "bucket-for-storage-profile"
     key     = "${get_env("SCALR_WORKSPACE_ID")}/${path_relative_to_include()}/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
