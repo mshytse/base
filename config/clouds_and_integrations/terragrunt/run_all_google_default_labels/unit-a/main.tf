@@ -7,21 +7,12 @@ terraform {
   }
 }
 
-variable "unit_name" {
-  type    = string
-  default = "unit-a"
-}
-
 resource "google_storage_bucket" "unit" {
-  name          = "scalr-manual-run-all-labels-${var.unit_name}"
+  name          = "scalr-manual-run-all-labels-unit-a"
   location      = "US"
   force_destroy = true
 
   labels = {
     app = "bucket-test"
   }
-}
-
-output "bucket_name" {
-  value = google_storage_bucket.unit.name
 }
