@@ -1,6 +1,6 @@
 version = "v1"
 
 policy "always_fail_advisory" {
-  enabled           = false
+  enabled           = true
   enforcement_level = "advisory"
 }

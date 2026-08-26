@@ -1,6 +1,6 @@
 version = "v1"
 
 policy "deny_on_wrong_marker" {
-  enabled           = false
+  enabled           = true
   enforcement_level = "hard-mandatory"
 }
