@@ -3,10 +3,9 @@
 
 package terraform
 
-import rego.v1
 import data.marker
 
-deny contains msg if {
+deny[msg] {
 	marker.group_marker != "group-hard-pass"
-	msg := sprintf("Wrong common function loaded: got marker %q", [marker.group_marker])
+	msg := sprintf("Wrong common function loaded: got marker %s", [marker.group_marker])
 }

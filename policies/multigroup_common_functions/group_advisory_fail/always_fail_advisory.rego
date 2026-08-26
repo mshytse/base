@@ -3,10 +3,9 @@
 
 package terraform
 
-import rego.v1
 import data.marker
 
-deny contains msg if {
+deny[msg] {
 	marker.group_marker == "group-advisory-fail"
 	msg := "Advisory failure from group-advisory-fail"
 }
