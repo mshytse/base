@@ -6,6 +6,6 @@ package terraform
 import data.marker
 
 deny[msg] {
-	marker.group_marker != "group-hard-pass"
+	not marker.is_group("group-hard-pass")
 	msg := sprintf("Wrong common function loaded: got marker %s", [marker.group_marker])
 }

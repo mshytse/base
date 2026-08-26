@@ -6,6 +6,6 @@ package terraform
 import data.marker
 
 deny[msg] {
-	marker.group_marker == "group-advisory-fail"
+	marker.is_group("group-advisory-fail")
 	msg := "Advisory failure from group-advisory-fail"
 }
