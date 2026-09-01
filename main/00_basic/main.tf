@@ -21,12 +21,3 @@ resource "terraform_data" "test" {
     timestamp()
   ]
 }
-
-resource "terraform_data" "test2" {
-  input = var.input
-  triggers_replace = timestamp()
-}
-
-output "test2" {
-  value = terraform_data.test2.output
-}
