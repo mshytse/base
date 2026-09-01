@@ -6,7 +6,7 @@ policy "advisory" {
 }
 
 policy "soft-mandatory" {
-  enabled           = true
+  enabled           = false
   enforcement_level = "soft-mandatory"
 }
 
