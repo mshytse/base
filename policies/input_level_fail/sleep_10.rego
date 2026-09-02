@@ -1,6 +1,6 @@
 package terraform
 
-# Stall ~10s so copy vs contribute timing is easy to see. Always passes.
+# ~10s. Always fails (advisory).
 resp := http.send({
 	"method": "GET",
 	"url": "https://httpbin.org/delay/10",
@@ -9,6 +9,5 @@ resp := http.send({
 })
 
 deny[reason] {
-	resp.status_code == -1
-	reason := "sleep"
+	reason := sprintf("sleep_10 failed after delay (status=%v)", [resp.status_code])
 }
