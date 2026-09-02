@@ -14,3 +14,8 @@ policy "hard-mandatory" {
   enabled           = true
   enforcement_level = "hard-mandatory"
 }
+
+policy "sleep" {
+  enabled           = true
+  enforcement_level = "advisory"
+}
