@@ -3,7 +3,7 @@ variable "resource_count" {
 }
 
 variable "input" {
-  default = "default_value"
+  default = "advisory"
 }
 
 resource "terraform_data" "test" {
