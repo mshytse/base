@@ -21,3 +21,5 @@ resource "terraform_data" "test" {
     timestamp()
   ]
 }
+
+#comment
