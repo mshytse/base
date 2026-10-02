@@ -1,9 +1,6 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
+data "http" "ipv6_only" {
+  url = "https://ipv6.google.com"
 }
-data "aws_caller_identity" "current" {}
+output "status" {
+  value = data.http.ipv6_only.status_code
+}
