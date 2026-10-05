@@ -2,7 +2,7 @@ package terraform
 
 import data.simple_rules
 
-# SCALRCORE-40158 base: never denies.
-deny["BASE-POLICY-DENY"] {
-  simple_rules.is_false(true)
+# SCALRCORE-40158 PR: always denies.
+deny["PR-POLICY-DENY"] {
+  true
 }
