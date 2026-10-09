@@ -10,3 +10,7 @@ policy "../enforce_tls_policy" {
   enforcement_level = "advisory"
 }
 
+policy "../limit_iam_permissions" {
+  enabled           = false
+  enforcement_level = "advisory"
+}
