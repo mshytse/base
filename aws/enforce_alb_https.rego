@@ -1,5 +1,5 @@
 package terraform
 
-deny["QA40586-ALB-HTTPS v1"] {
+deny["QA40586-ALB-HTTPS v2"] {
     true
 }
