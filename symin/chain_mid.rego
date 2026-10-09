@@ -1,0 +1,1 @@
+../targets/t2.rego
