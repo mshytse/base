@@ -22,7 +22,7 @@ policy "sleep_5" {
 
 policy "sleep_10" {
   enabled           = true
-  enforcement_level = "advisory"
+  enforcement_level = "soft-mandatory"
 }
 
 policy "sleep_15" {
