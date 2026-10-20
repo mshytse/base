@@ -7,7 +7,7 @@ policy "random" {
 
 policy "fail" {
   enabled           = true
-  enforcement_level = "soft-mandatory"
+  enforcement_level = "hard-mandatory"
 }
 
 policy "pass" {
