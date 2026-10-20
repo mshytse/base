@@ -1,10 +1,7 @@
 package terraform
 import input.tfrun as tfrun
 
-bool_value = false
-
 deny[reason] {
-    check := bool_value
-    check == true
-    reason := "This policy should be passed in any case."
+    not startswith(tfrun.workspace.name, "edge-")
+    reason := sprintf("Workspace %s must be named with a team prefix (edge-*)", [tfrun.workspace.name])
 }
