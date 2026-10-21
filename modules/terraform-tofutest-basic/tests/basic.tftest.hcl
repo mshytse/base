@@ -6,7 +6,7 @@ run "verify_default_environment" {
 
   # Test that the module uses default values correctly
   assert {
-    condition     = var.environment == "dev"
+    condition     = var.environment == "qa40282-fail"
     error_message = "Default environment should be 'dev'"
   }
 
