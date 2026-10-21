@@ -65,3 +65,9 @@ run "verify_computed_id_format" {
     error_message = "Computed ID should match pattern 'dev-XXXXXXXX' where X is hex"
   }
 }
+
+run "qa40282_broken" {
+  command = apply
+  assert {
+    condition = 
+  }
