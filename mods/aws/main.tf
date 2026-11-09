@@ -7,3 +7,4 @@ resource "terraform_data" "x" {
 }
 output "out" { value = terraform_data.x.output }
 # pr7
+# pr7 sync
