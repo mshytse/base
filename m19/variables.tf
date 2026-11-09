@@ -1,1 +1,1 @@
-/opt/scalr-server/embedded/scalr/app/python/fatmouse/tests/e2e/test_data/memory_limit/main.tf
+/opt/scalr-server/embedded/scalr/app/python/fatmouse/taco/app/blob/docs/aws_s3_sp_example/variables.tf
